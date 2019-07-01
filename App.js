@@ -19,7 +19,12 @@
 //   },
 // });
 import React from 'react';
-import { Button, Text, View, SafeAreaView } from 'react-native';
+import { 
+  Button, 
+  Text, 
+  View, 
+  SafeAreaView,
+  TouchableOpacity } from 'react-native';
 import {
   createBottomTabNavigator,
   createAppContainer,
@@ -38,44 +43,39 @@ import SearchScreen from './screens/SearchScreen';
 
 const CustomDrawerContentComponent = props => (
   <SafeAreaView
-    style={{ flex: 1 }}
-    forceInset={{ top: 'always', horizontal: 'never' }}>
-    <View>
-      <Text>Hello! Welcome to my sidemenu</Text>
+    style = {{flex: 1}}
+    forceInset = {{top: 'always', horizontal: 'never'}}>
+    <View
+      style = {{marginTop: 10}}>
+      <TouchableOpacity 
+        style={styles.button}
+        onPress={() => {
+          props.navigation.dispatch(DrawerActions.closeDrawer());
+          props.navigation.navigate('Home');
+        }}>
+        <Text 
+         style={styles.sidemenuText}> Home </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          props.navigation.dispatch(DrawerActions.closeDrawer());
+          props.navigation.navigate('Settings');
+        }}>
+        <Text
+          style={styles.sidemenuText}> Settings </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          props.navigation.dispatch(DrawerActions.closeDrawer());
+          props.navigation.navigate('Search');
+        }}>
+        <Text
+          style={styles.sidemenuText}> Search </Text>
+      </TouchableOpacity>
+      
     </View>
-    
-    <Button 
-      //icon="add-a-photo"
-      //mode="contained"
-      style=""
-      title="Home"
-      onPress={() => {
-        props.navigation.dispatch(DrawerActions.closeDrawer());
-        props.navigation.navigate('Home');
-      }}>
-      
-    </Button>
-    <Button
-      //icon="add-a-photo"
-      //mode="contained"
-      title="Settings"
-      onPress={() => {
-        props.navigation.dispatch(DrawerActions.closeDrawer());
-        props.navigation.navigate('Settings');
-      }}>
-      
-    </Button>
-
-     <Button
-      //icon="add-a-photo"
-      //mode="contained"
-      title="Search"
-      onPress={() => {
-        props.navigation.dispatch(DrawerActions.closeDrawer());
-        props.navigation.navigate('Search');
-      }}>
-      
-    </Button>
   </SafeAreaView>
 );
 
@@ -114,7 +114,7 @@ const TabNavigator = createBottomTabNavigator(
         }
         // You can return any component that you like here! We usually use an
         // icon component from react-native-vector-icons
-        return <Ionicons name={iconName} size={35} color={tintColor} />;
+        return <Ionicons name={iconName} size={30} color={tintColor} />;
       },
     }),
     tabBarOptions: {
@@ -134,5 +134,17 @@ const MyDrawerNavigator = createDrawerNavigator(
     contentComponent: props => <CustomDrawerContentComponent {...props} />,
   }
 );
+
+const styles = {
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 12,
+    marginBottom: 10
+  },
+  sidemenuText: {
+    fontSize: 15
+  }
+}
 export default createAppContainer(MyDrawerNavigator);
 

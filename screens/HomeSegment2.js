@@ -15,8 +15,9 @@ export default class HomeSegment2 extends React.Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		alignItems: "center",
-		justifyContent: "center",
-		backgroundColor: "#673ab7"
+		padding: 10
+		// alignItems: "center",
+		// justifyContent: "center",
+		// backgroundColor: "#ff4081"
 	}
 });

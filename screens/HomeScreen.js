@@ -19,8 +19,8 @@ export default class HomeScreen extends React.Component {
 		return {
 			headerLeft: <MenuButton onPress={() => navigation.openDrawer()} />,
 			headerTitle: 'Home',
-			headerBackTitle: "Home",
-			headerLayoutPreset: "center",
+			//headerBackTitle: "Home",
+			//headerLayoutPreset: "center",
 			headerStyle: {
 	      elevation: 0.0,
 	    },
